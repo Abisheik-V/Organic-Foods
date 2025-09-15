@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Organic Foods Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background: #388e3c;
+        }
+        .navbar-brand, .nav-link, .footer-link {
+            color: #fff !important;
+        }
+        .category-filter {
+            margin-bottom: 24px;
+        }
+        .product-card {
+            border-radius: 10px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+        }
+        .footer {
+            background: #263238;
+            color: #fff;
+            padding: 40px 0 20px 0;
+        }
+        .footer h5 {
+            color: #a5d6a7;
+        }
+        @media (max-width: 767px) {
+            .product-card {
+                margin-bottom: 16px;
+            }
+            .footer {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background: #388e3c;">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <img src="https://img.icons8.com/ios-filled/40/ffffff/organic-food.png" alt="Organic Foods Logo" style="height:32px;"> Organic Foods
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="cart.html"><span class="bi bi-cart4"></span> Cart</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="order tracking.html">Order Tracking</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h2 class="mb-4 text-center" data-aos="fade-right">All Products</h2>
+      <!-- Category Filter -->
+      <div class="row category-filter justify-content-center">
+        <div class="col-auto">
+          <select class="form-select" id="categorySelect">
+            <option value="all">All Categories</option>
+            <option value="fruits">Fruits</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="dairy">Dairy</option>
+            <option value="bakery">Bakery</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" id="products-list">
+        <!-- Products will be rendered here by JS -->
+      </div>
+    </div>
+
+    <!-- Cart Section (Modal) -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group mb-3" id="cart-items"></ul>
+            <div class="d-flex justify-content-between">
+              <span>Subtotal:</span>
+              <span id="cart-subtotal">₹0</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>GST (5%):</span>
+              <span id="cart-gst">₹0</span>
+            </div>
+            <div class="d-flex justify-content-between fw-bold">
+              <span>Total:</span>
+              <span id="cart-total">₹0</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+            <button type="button" class="btn btn-success" id="checkout-btn">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5" id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>About Us</h5>
+            <p>We deliver fresh, organic, and healthy food products to your doorstep. Quality and customer satisfaction are our top priorities.</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Contact</h5>
+            <p>Email: support@organicfoods.com<br>Phone: +91 98765 43210</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <a href="index.html#categories" class="footer-link d-block">Categories</a>
+            <a href="product.html" class="footer-link d-block">Products</a>
+            <a href="#cart" class="footer-link d-block" data-bs-toggle="modal" data-bs-target="#cartModal">Cart</a>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <small>&copy; 2025 Organic Foods Store. All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      // Product Data (10 per category)
+      const products = [
+        // Fruits
+        {name: 'Organic Apple', price: 120, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/apple.png'},
+        {name: 'Banana', price: 40, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/banana.png'},
+        {name: 'Orange', price: 80, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/orange.png'},
+        {name: 'Papaya', price: 60, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/papaya.png'},
+        {name: 'Pineapple', price: 90, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/pineapple.png'},
+        {name: 'Grapes', price: 100, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/grapes.png'},
+        {name: 'Mango', price: 150, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/mango.png'},
+        {name: 'Watermelon', price: 70, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/watermelon.png'},
+        {name: 'Guava', price: 60, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/guava.png'},
+        {name: 'Pomegranate', price: 130, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/pomegranate.png'},
+        // Vegetables
+        {name: 'Organic Broccoli', price: 90, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/broccoli.png'},
+        {name: 'Carrot', price: 50, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/carrot.png'},
+        {name: 'Tomato', price: 30, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/tomato.png'},
+        {name: 'Potato', price: 25, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/potato.png'},
+        {name: 'Onion', price: 35, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/onion.png'},
+        {name: 'Spinach', price: 40, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/spinach.png'},
+        {name: 'Cabbage', price: 45, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/cabbage.png'},
+        {name: 'Cauliflower', price: 55, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/cauliflower.png'},
+        {name: 'Peas', price: 60, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/peas.png'},
+        {name: 'Brinjal', price: 50, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/eggplant.png'},
+        // Dairy
+        {name: 'Organic Milk', price: 60, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/milk-bottle.png'},
+        {name: 'Paneer', price: 200, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/paneer.png'},
+        {name: 'Curd', price: 50, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/yogurt.png'},
+        {name: 'Butter', price: 90, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/butter.png'},
+        {name: 'Cheese', price: 120, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/cheese.png'},
+        {name: 'Ghee', price: 300, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/ghee.png'},
+        {name: 'Lassi', price: 40, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/lassi.png'},
+        {name: 'Flavored Milk', price: 70, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/flavored-milk.png'},
+        {name: 'Cream', price: 80, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/cream.png'},
+        {name: 'Khoa', price: 150, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/khoa.png'},
+        // Bakery
+        {name: 'Organic Bread', price: 50, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bread.png'},
+        {name: 'Brown Bread', price: 60, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bread.png'},
+        {name: 'Buns', price: 40, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bun.png'},
+        {name: 'Croissant', price: 80, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/croissant.png'},
+        {name: 'Bagel', price: 70, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bagel.png'},
+        {name: 'Muffin', price: 60, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/muffin.png'},
+        {name: 'Cake', price: 200, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/cake.png'},
+        {name: 'Cookies', price: 90, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/cookies.png'},
+        {name: 'Pastry', price: 100, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/pastry.png'},
+        {name: 'Donut', price: 80, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/doughnut.png'}
+      ];
+      // Render products
+      function renderProducts(category = 'all') {
+        const list = document.getElementById('products-list');
+        let filtered = category === 'all' ? products : products.filter(p => p.category === category);
+        list.innerHTML = filtered.map(product => `
+          <div class="col-6 col-md-3" data-aos="fade-up">
+            <div class="product-card p-3 bg-white text-center">
+              <img src="${product.img}" alt="${product.name}" class="mb-2">
+              <h6>${product.name}</h6>
+              <p class="mb-1">₹${product.price}</p>
+              <button class="btn btn-outline-success btn-sm add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+            </div>
+          </div>
+        `).join('');
+        AOS.refresh();
+        attachCartEvents();
+      }
+      document.getElementById('categorySelect').addEventListener('change', function() {
+        renderProducts(this.value);
+      });
+      // Cart functionality (shared with index.html)
+      let cart = [];
+      function updateCart() {
+        const cartItems = document.getElementById('cart-items');
+        const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const gst = +(subtotal * 0.05).toFixed(2);
+        const total = subtotal + gst;
+        cartItems.innerHTML = cart.map((item, idx) => `
+          <li class='list-group-item d-flex justify-content-between align-items-center'>
+            ${item.name} <span>₹${item.price} x ${item.qty}</span>
+            <button class='btn btn-sm btn-danger ms-2' onclick='removeFromCart(${idx})'>&times;</button>
+          </li>
+        `).join('') || '<li class="list-group-item">Cart is empty</li>';
+        document.getElementById('cart-subtotal').textContent = `₹${subtotal}`;
+        document.getElementById('cart-gst').textContent = `₹${gst}`;
+        document.getElementById('cart-total').textContent = `₹${total}`;
+      }
+      function removeFromCart(idx) {
+        cart.splice(idx, 1);
+        updateCart();
+      }
+      function attachCartEvents() {
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const price = +this.getAttribute('data-price');
+            const found = cart.find(item => item.name === name);
+            if (found) found.qty++;
+            else cart.push({ name, price, qty: 1 });
+            updateCart();
+            new bootstrap.Modal(document.getElementById('cartModal')).show();
+          });
+        });
+      }
+      document.getElementById('checkout-btn').addEventListener('click', function() {
+        if (!cart.length) return alert('Your cart is empty!');
+        window.location.href = 'checkout.html';
+      });
+      // Initial render
+      renderProducts();
+    </script>
+</body>
+</html>
