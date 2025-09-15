@@ -9,6 +9,18 @@
     <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
+    .nav-link:hover, .navbar-nav .nav-link.active {
+      background: #2e7031;
+      color: #fff !important;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .product-card img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
         html, body {
             max-width: 100vw;
             overflow-x: hidden;
@@ -28,7 +40,7 @@
             margin-bottom: 24px;
         }
         .footer {
-            background: #263238;
+            background: #14532d;
             color: #fff;
             padding: 40px 0 20px 0;
         }
@@ -132,28 +144,65 @@
 
     <!-- Footer -->
     <footer class="footer mt-5" id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <h5>About Us</h5>
-            <p>We deliver fresh, organic, and healthy food products to your doorstep. Quality and customer satisfaction are our top priorities.</p>
-          </div>
-          <div class="col-md-4 mb-3">
-            <h5>Contact</h5>
-            <p>Email: support@organicfoods.com<br>Phone: +91 98765 43210</p>
-          </div>
-          <div class="col-md-4 mb-3">
-            <h5>Quick Links</h5>
-            <a href="index.html#categories" class="footer-link d-block">Categories</a>
-            <a href="product.html" class="footer-link d-block">Products</a>
-            <a href="#cart" class="footer-link d-block" data-bs-toggle="modal" data-bs-target="#cartModal">Cart</a>
-          </div>
-        </div>
-        <div class="text-center mt-3">
-          <small>&copy; 2025 Organic Foods Store. All rights reserved.</small>
+<footer class="" style="background:#14532d; color:#fff;" class="pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- About -->
+      <div class="col-md-3 mb-4">
+        <h5 class="text-uppercase mb-3">About Organic Store</h5>
+        <p>
+          We provide 100% certified organic fruits, vegetables, grains, dairy, and more — 
+          directly sourced from trusted farmers. Eat healthy, live better!
+        </p>
+      </div>
+      <!-- Quick Links -->
+      <div class="col-md-3 mb-4">
+        <h5 class="text-uppercase mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="shop.html" class="text-white text-decoration-none">Shop</a></li>
+          <li><a href="cart.html" class="text-white text-decoration-none">Cart</a></li>
+          <li><a href="checkout.html" class="text-white text-decoration-none">Checkout</a></li>
+          <li><a href="order-tracking.html" class="text-white text-decoration-none">Track Order</a></li>
+        </ul>
+      </div>
+      <!-- Customer Service -->
+      <div class="col-md-3 mb-4">
+        <h5 class="text-uppercase mb-3">Customer Service</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Shipping & Delivery</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Returns & Refunds</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div class="col-md-3 mb-4">
+        <h5 class="text-uppercase mb-3">Get In Touch</h5>
+        <p>
+          <i class="bi bi-geo-alt-fill"></i> 123 Green Avenue, Chennai, India <br>
+          <i class="bi bi-telephone-fill"></i> +91-9876543210 <br>
+          <i class="bi bi-envelope-fill"></i> support@organicstore.com
+        </p>
+        <div>
+          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
-    </footer>
+    </div>
+    <hr class="border-light">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 Organic Store. All Rights Reserved. 
+        | Crafted with <span style="color:#ff5252;">♥</span> for healthy living.
+      </p>
+    </div>
+  </div>
+</footer>
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -164,66 +213,101 @@
       // Product Data (10 per category)
       const products = [
         // Fruits
-        {name: 'Organic Apple', price: 120, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/apple.png'},
-        {name: 'Banana', price: 40, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/banana.png'},
-        {name: 'Orange', price: 80, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/orange.png'},
-        {name: 'Papaya', price: 60, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/papaya.png'},
-        {name: 'Pineapple', price: 90, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/pineapple.png'},
-        {name: 'Grapes', price: 100, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/grapes.png'},
-        {name: 'Mango', price: 150, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/mango.png'},
-        {name: 'Watermelon', price: 70, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/watermelon.png'},
-        {name: 'Guava', price: 60, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/guava.png'},
-        {name: 'Pomegranate', price: 130, category: 'fruits', img: 'https://img.icons8.com/color/96/000000/pomegranate.png'},
+        {name: 'Organic Apple', price: 120, category: 'fruits', img: 'Assets/photos/apple.jpg'},
+        {name: 'Banana', price: 40, category: 'fruits', img: 'Assets/photos/banana.jpg'},
+        {name: 'Orange', price: 80, category: 'fruits', img: 'Assets/photos/orange.jpg'},
+        {name: 'Papaya', price: 60, category: 'fruits', img: 'Assets/photos/papaya.jpg'},
+        {name: 'Pineapple', price: 90, category: 'fruits', img: 'Assets/photos/pineapple.jpg'},
+        {name: 'Grapes', price: 100, category: 'fruits', img: 'Assets/photos/grapes.jpg'},
+        {name: 'Mango', price: 150, category: 'fruits', img: 'Assets/photos/mango.jpg'},
+        {name: 'Watermelon', price: 70, category: 'fruits', img: 'Assets/photos/watermelon.jpg'},
+        {name: 'Guava', price: 60, category: 'fruits', img: 'Assets/photos/guava.jpg'},
+        {name: 'Pomegranate', price: 130, category: 'fruits', img: 'Assets/photos/pomegranate.jpg'},
         // Vegetables
-        {name: 'Organic Broccoli', price: 90, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/broccoli.png'},
-        {name: 'Carrot', price: 50, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/carrot.png'},
-        {name: 'Tomato', price: 30, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/tomato.png'},
-        {name: 'Potato', price: 25, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/potato.png'},
-        {name: 'Onion', price: 35, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/onion.png'},
-        {name: 'Spinach', price: 40, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/spinach.png'},
-        {name: 'Cabbage', price: 45, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/cabbage.png'},
-        {name: 'Cauliflower', price: 55, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/cauliflower.png'},
-        {name: 'Peas', price: 60, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/peas.png'},
-        {name: 'Brinjal', price: 50, category: 'vegetables', img: 'https://img.icons8.com/color/96/000000/eggplant.png'},
+        {name: 'Organic Broccoli', price: 90, category: 'vegetables', img: 'Assets/photos/broccoli.jpg'},
+        {name: 'Carrot', price: 50, category: 'vegetables', img: 'Assets/photos/carrot.jpg'},
+        {name: 'Tomato', price: 30, category: 'vegetables', img: 'Assets/photos/tomato.jpg'},
+        {name: 'Potato', price: 25, category: 'vegetables', img: 'Assets/photos/potato.jpg'},
+        {name: 'Onion', price: 35, category: 'vegetables', img: 'Assets/photos/onion.jpg'},
+        {name: 'Spinach', price: 40, category: 'vegetables', img: 'Assets/photos/spinach.jpg'},
+        {name: 'Cabbage', price: 45, category: 'vegetables', img: 'Assets/photos/cabbage.jpg'},
+        {name: 'Cauliflower', price: 55, category: 'vegetables', img: 'Assets/photos/cauliflower.jpg'},
+        {name: 'Peas', price: 60, category: 'vegetables', img: 'Assets/photos/peas.jpg'},
+        {name: 'Brinjal', price: 50, category: 'vegetables', img: 'Assets/photos/eggplant.jpg'},
         // Dairy
-        {name: 'Organic Milk', price: 60, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/milk-bottle.png'},
-        {name: 'Paneer', price: 200, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/paneer.png'},
-        {name: 'Curd', price: 50, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/yogurt.png'},
-        {name: 'Butter', price: 90, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/butter.png'},
-        {name: 'Cheese', price: 120, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/cheese.png'},
-        {name: 'Ghee', price: 300, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/ghee.png'},
-        {name: 'Lassi', price: 40, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/lassi.png'},
-        {name: 'Flavored Milk', price: 70, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/flavored-milk.png'},
-        {name: 'Cream', price: 80, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/cream.png'},
-        {name: 'Khoa', price: 150, category: 'dairy', img: 'https://img.icons8.com/color/96/000000/khoa.png'},
+        {name: 'Organic Milk', price: 60, category: 'dairy', img: 'Assets/photos/milk.jpg'},
+        {name: 'Paneer', price: 200, category: 'dairy', img: 'Assets/photos/paneer.jpg'},
+        {name: 'Curd', price: 50, category: 'dairy', img: 'Assets/photos/curd.jpg'},
+        {name: 'Butter', price: 90, category: 'dairy', img: 'Assets/photos/butter.jpg'},
+        {name: 'Cheese', price: 120, category: 'dairy', img: 'Assets/photos/cheese.jpg'},
+        {name: 'Ghee', price: 300, category: 'dairy', img: 'Assets/photos/ghee.jpg'},
+        {name: 'Lassi', price: 40, category: 'dairy', img: 'Assets/photos/lassi.jpg'},
+        {name: 'Flavored Milk', price: 70, category: 'dairy', img: 'Assets/photos/flavored-milk.jpg'},
+        {name: 'Cream', price: 80, category: 'dairy', img: 'Assets/photos/cream.jpg'},
+        {name: 'Khoa', price: 150, category: 'dairy', img: 'Assets/photos/khoa.jpg'},
         // Bakery
-        {name: 'Organic Bread', price: 50, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bread.png'},
-        {name: 'Brown Bread', price: 60, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bread.png'},
-        {name: 'Buns', price: 40, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bun.png'},
-        {name: 'Croissant', price: 80, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/croissant.png'},
-        {name: 'Bagel', price: 70, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/bagel.png'},
-        {name: 'Muffin', price: 60, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/muffin.png'},
-        {name: 'Cake', price: 200, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/cake.png'},
-        {name: 'Cookies', price: 90, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/cookies.png'},
-        {name: 'Pastry', price: 100, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/pastry.png'},
-        {name: 'Donut', price: 80, category: 'bakery', img: 'https://img.icons8.com/color/96/000000/doughnut.png'}
+        {name: 'Organic Bread', price: 50, category: 'bakery', img: 'Assets/photos/bread.jpg'},
+        {name: 'Brown Bread', price: 60, category: 'bakery', img: 'Assets/photos/bread.jpg'},
+        {name: 'Buns', price: 40, category: 'bakery', img: 'Assets/photos/bun.jpg'},
+        {name: 'Croissant', price: 80, category: 'bakery', img: 'Assets/photos/croissant.jpg'},
+        {name: 'Bagel', price: 70, category: 'bakery', img: 'Assets/photos/bagel.jpg'},
+        {name: 'Muffin', price: 60, category: 'bakery', img: 'Assets/photos/muffin.jpg'},
+        {name: 'Cake', price: 200, category: 'bakery', img: 'Assets/photos/cake.jpg'},
+        {name: 'Cookies', price: 90, category: 'bakery', img: 'Assets/photos/cookies.jpg'},
+        {name: 'Pastry', price: 100, category: 'bakery', img: 'Assets/photos/pastry.jpg'},
+        {name: 'Donut', price: 80, category: 'bakery', img: 'Assets/photos/doughnut.jpg'}
       ];
       // Render products
       function renderProducts(category = 'all') {
         const list = document.getElementById('products-list');
         let filtered = category === 'all' ? products : products.filter(p => p.category === category);
-        list.innerHTML = filtered.map(product => `
-          <div class="col-6 col-md-3" data-aos="fade-up">
-            <div class="product-card p-3 bg-white text-center">
-              <img src="${product.img}" alt="${product.name}" class="mb-2">
-              <h6>${product.name}</h6>
-              <p class="mb-1">₹${product.price}</p>
-              <button class="btn btn-outline-success btn-sm add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+        list.innerHTML = filtered.map((product, idx) => {
+          // Determine unit type
+          let unit = 'kg';
+          if (product.category === 'dairy') unit = 'ltr';
+          if (product.category === 'bakery') unit = 'no';
+          // Unique ids for selectors
+          const qtyId = `qty-${idx}`;
+          const unitId = `unit-${idx}`;
+          return `
+            <div class="col-6 col-md-3" data-aos="fade-up">
+              <div class="product-card p-3 bg-white text-center">
+                  <img src="${product.img}" alt="${product.name}" class="product-image">
+                <h6>${product.name}</h6>
+                <div class="mb-2 d-flex justify-content-center align-items-center gap-2">
+                  <input type="number" min="1" value="1" class="form-control form-control-sm" style="width:60px;" id="${qtyId}" />
+                  <select class="form-select form-select-sm" style="width:70px;" id="${unitId}">
+                    <option value="kg" ${unit==='kg'?'selected':''}>kg</option>
+                    <option value="ltr" ${unit==='ltr'?'selected':''}>ltr</option>
+                    <option value="no" ${unit==='no'?'selected':''}>no</option>
+                  </select>
+                </div>
+                <p class="mb-1">₹<span id="price-${idx}">${product.price}</span> / <span id="${unitId}-label">${unit}</span></p>
+                <button class="btn btn-outline-success btn-sm add-to-cart" data-idx="${idx}" data-name="${product.name}" data-price="${product.price}" data-category="${product.category}">Add to Cart</button>
+              </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
+        // Update price per quantity and unit
+        filtered.forEach((product, idx) => {
+          const qtyInput = document.getElementById(`qty-${idx}`);
+          const priceSpan = document.getElementById(`price-${idx}`);
+          if (qtyInput && priceSpan) {
+            qtyInput.addEventListener('input', function() {
+              let qty = Math.max(1, parseInt(this.value)||1);
+              priceSpan.textContent = product.price * qty;
+            });
+          }
+          const unitSelect = document.getElementById(`unit-${idx}`);
+          const unitLabel = document.getElementById(`unit-${idx}-label`);
+          if (unitSelect && unitLabel) {
+            unitSelect.addEventListener('change', function() {
+              unitLabel.textContent = this.value;
+            });
+          }
+        });
         AOS.refresh();
-        attachCartEvents();
+        attachCartEvents(filtered);
       }
       document.getElementById('categorySelect').addEventListener('change', function() {
         renderProducts(this.value);
@@ -257,8 +341,10 @@
             const found = cart.find(item => item.name === name);
             if (found) found.qty++;
             else cart.push({ name, price, qty: 1 });
-            updateCart();
-            new bootstrap.Modal(document.getElementById('cartModal')).show();
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // Redirect to cart page
+            window.location.href = 'cart.html';
           });
         });
       }
